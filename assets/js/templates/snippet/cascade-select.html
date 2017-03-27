@@ -1,0 +1,38 @@
+<% var ishow = options_will_show.some(function(opt){ return options.indexOf(opt) > -1}) %>
+<div class="cascade">
+	<div class="control-group">
+	  	<div class="cascade-group">
+			  <label class="control-label" for="<%- id %>"><%- label %></label>
+			  <div class="controls">
+			    <select id="<%- id %>" name="<%- id %>" subid="<%- id2 %>" onchange="showInput(this)" class="<%- inputsize %>"><% _.each(options, function(option) { %>
+			      <option><%- option %></option><% }); %>
+			    </select>
+			  </div>
+		</div>
+		<div class="cascade-group">
+		  <div class="controls">
+		    <input id="<%- id2 %>"
+		    	datas="<%- JSON.stringify(options_will_show) %>"
+		    	name="<%- id2 %>"
+		    	type="text"
+		    	class="<%- inputsize %> <%- (ishow ? '' : 'hide') %>"
+		    	<% if(required) {%> required <% } %>
+		    />
+		  </div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function showInput(ele){
+		var subid = ele.attributes.subid.value;
+		var selectVal = ele.value;
+		var inputEle = document.getElementById(subid);
+		var inputDatas = JSON.parse(inputEle.attributes.datas.value);
+		if(inputDatas.indexOf(selectVal) > -1){
+			inputEle.classList.remove("hide");
+		}else{
+			inputEle.classList.add("hide");
+		}
+
+	}
+</script>

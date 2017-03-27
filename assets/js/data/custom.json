@@ -1,0 +1,192 @@
+[
+  {
+    "title": "cascade2",
+    "fields": {
+      "id": {
+        "label": "id/名字",
+        "type": "input",
+        "value": "cascade"
+      },
+      "id2": {
+        "label": "id/名字",
+        "type": "input",
+        "value": "cascade"
+      },
+      "label": {
+        "label": "一级标题",
+        "type": "input",
+        "value": "一级标题"
+      },
+      "label2": {
+        "label": "二级标题",
+        "type": "input",
+        "value": "二级标题"
+      },
+      "inputsize": {
+        "label": "Input Size",
+        "type": "select",
+        "value": [
+          {
+            "value": "input-mini",
+            "label": "Mini",
+            "selected": false
+          },
+          {
+            "value": "input-small",
+            "label": "Small",
+            "selected": true
+          },
+          {
+            "value": "input-medium",
+            "label": "Medium",
+            "selected": false
+          }
+        ]
+      },
+      "options":{
+        "label": "Options",
+        "type": "textarea-split",
+        "value": [
+          "湖北-武汉",
+          "湖北-黄石",
+          "湖南-湘潭",
+          "河北-河北"
+        ]
+      }
+    }
+  },
+  {
+    "title": "cascade3",
+    "fields": {
+      "id": {
+        "label": "id/名字",
+        "type": "input",
+        "value": "cascade1"
+      },
+      "id2": {
+        "label": "id/名字",
+        "type": "input",
+        "value": "cascade2"
+      },
+      "id3": {
+        "label": "id/名字",
+        "type": "input",
+        "value": "cascade3"
+      },
+      "label": {
+        "label": "一级标题",
+        "type": "input",
+        "value": "一级标题"
+      },
+      "label2": {
+        "label": "二级标题",
+        "type": "input",
+        "value": ""
+      },
+      "label3": {
+        "label": "三级级标题",
+        "type": "input",
+        "value": ""
+      },
+      "inputsize": {
+        "label": "Input Size",
+        "type": "select",
+        "value": [
+          {
+            "value": "input-mini",
+            "label": "Mini",
+            "selected": false
+          },
+          {
+            "value": "input-small",
+            "label": "Small",
+            "selected": true
+          },
+          {
+            "value": "input-medium",
+            "label": "Medium",
+            "selected": false
+          }
+        ]
+      },
+      "options":{
+        "label": "Options",
+        "type": "textarea-split",
+        "value": [
+          "湖北-武汉-忻州",
+          "湖北-黄石-铁山",
+          "湖南-湘潭-aa",
+          "河北-河北-bb"
+        ]
+      }
+    }
+  },
+  {
+    "title": "cascade-select",
+    "fields": {
+      "id": {
+        "label": "id/名字",
+        "type": "input",
+        "value": "cascade-select-1"
+      },
+      "id2": {
+        "label": "id2/名字",
+        "type": "input",
+        "value": "cascade-select-2"
+      },
+      "label": {
+        "label": "一级标题",
+        "type": "input",
+        "value": "一级标题"
+      },
+      "label2": {
+        "label": "二级标题",
+        "type": "input",
+        "value": ""
+      },
+      "inputsize": {
+        "label": "Input Size",
+        "type": "select",
+        "value": [
+          {
+            "value": "input-mini",
+            "label": "Mini",
+            "selected": false
+          },
+          {
+            "value": "input-small",
+            "label": "Small",
+            "selected": true
+          },
+          {
+            "value": "input-medium",
+            "label": "Medium",
+            "selected": false
+          }
+        ]
+      },
+      "options":{
+        "label": "下拉框选项",
+        "type": "textarea-split",
+        "value": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "options_will_show":{
+        "label": "输入框显示项",
+        "type": "textarea-split",
+        "value": [
+          "1",
+          "2"
+        ]
+      },
+      "required": {
+        "label": "Required",
+        "type": "checkbox",
+        "value": false
+      }
+    }
+  }
+]

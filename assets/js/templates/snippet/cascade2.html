@@ -1,0 +1,42 @@
+<!-- cascade 2-->
+<% 
+	 var optionsObj = options.map(function(opt){ return opt.split("-") })
+	 .filter(function(opts){ return opts.length === 2})
+	 .reduce(function(obj,opts){
+		obj[opts[0]] ? obj[opts[0]].push(opts[1]) : (obj[opts[0]] = [opts[1]]);
+		return obj;
+	 },{});
+	 var subOptions = optionsObj[Object.keys(optionsObj)[0]];
+  %>
+<div class="control-group">
+	<div class="cascade">
+		<div class="cascade-group">
+		  <label class="control-label" for="<%- id %>"><%- label %></label>
+		  <div class="controls">
+		    <select id="<%- id %>" name="<%- id %>" subid="<%- id2 %>" onchange="getSubOptions(this)" datas="<%- JSON.stringify(optionsObj) %>" class="<%- inputsize %>"><% _.each(optionsObj, function(val,key) { %>
+		      <option><%- key %></option><% }); %>
+		    </select>
+		  </div>
+		 </div>
+		<div class="cascade-group">
+		  <label class="control-label" for="<%- id2 %>"><%- label2 %></label>
+		  <div class="controls">
+		    <select id="<%- id2 %>" name="<%- id2 %>" class="<%- inputsize %>"><% _.each(subOptions, function(val) { %>
+		      <option><%- val %></option><% }); %>
+		    </select>
+		  </div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function getSubOptions(ele){
+		var atts = ele.attributes;
+		var allOptions = JSON.parse(atts.datas.value);
+		var subOptions = allOptions[ele.value];
+		var subSelectEle = document.getElementById(atts.subid.value);
+		subSelectEle.innerHTML = subOptions.reduce(function(str,item){
+			str = str + "<option> " + item + "</option>";
+			return str;
+		},"");
+	}
+</script>

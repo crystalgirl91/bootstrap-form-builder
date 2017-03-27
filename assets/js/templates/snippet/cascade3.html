@@ -1,0 +1,69 @@
+<% 
+	 var options1 = options.map(function(opt){ return opt.split("-") })
+	 .filter(function(opts){ return opts.length === 3})
+	 .reduce(function(obj,opts){
+	 	var key0 = opts[0];
+	 	var key1 = opts[1];
+	 	var key2 = opts[2];
+		if(obj[key0]){
+			if(obj[key0] && obj[key0][key1]){
+				obj[key0][key1].push(key2)
+			}else{
+				obj[key0][key1] = [key2];
+			}
+		}else{
+			obj[key0] = {};
+			obj[key0][key1] = [key2];
+		}
+		return obj;
+	 },{});
+	 var options2 = options1[Object.keys(options1)[0]];
+	 var options3 = options2[Object.keys(options2)[0]];
+  %>
+<div class="control-group">
+	<div class="cascade">
+		<div class="cascade-group">
+		  <label class="control-label" for="<%- id %>"><%- label %></label>
+		  <div class="controls">
+		    <select id="<%- id %>" name="<%- id %>" subid="<%- id2 %>" onchange="getSubOptions(this)" datas="<%- JSON.stringify(options1) %>" class="<%- inputsize %>"><% _.each(options1, function(val,key) { %>
+		      <option><%- key %></option><% }); %>
+		    </select>
+		  </div>
+		 </div>
+		<div class="cascade-group">
+		  <label class="control-label" for="<%- id2 %>"><%- label2 %></label>
+		  <div class="controls">
+		    <select id="<%- id2 %>" name="<%- id2 %>" subid="<%- id3 %>" onchange="getSubOptions(this)" datas="<%- JSON.stringify(options2) %>" class="<%- inputsize %>"><% _.each(options2, function(val,key) { %>
+		      <option><%- key %></option><% }); %>
+		    </select>
+		  </div>
+		</div>
+		<div class="cascade-group">
+		  <label class="control-label" for="<%- id3 %>"><%- label3 %></label>
+		  <div class="controls">
+		    <select id="<%- id3 %>" name="<%- id3 %>" class="<%- inputsize %>" datas="<%- JSON.stringify(options3) %>"><% _.each(options3, function(val) { %>
+		      <option><%- val %></option><% }); %>
+		    </select>
+		  </div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function getSubOptions(ele){
+		var curAttrs = ele.attributes;
+		if(curAttrs.subid){
+			var curDatas = JSON.parse(curAttrs.datas.value);
+			var subEle = document.getElementById(curAttrs.subid.value);
+			var subDatas = curDatas[ele.value];
+			subEle.setAttribute("datas",JSON.stringify(subDatas));
+			if(!Array.isArray(subDatas)){
+				subDatas = Object.keys(subDatas);
+			}
+			subEle.innerHTML = subDatas.reduce(function(str,opt){
+				str = str + "<option>" + opt + "</option>" 
+				return str;
+			},"");
+			getSubOptions(subEle);
+		}
+	}
+</script>
